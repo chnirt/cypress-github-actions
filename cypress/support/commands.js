@@ -25,3 +25,16 @@
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
 import "@cypress-audit/lighthouse/commands";
+require('cypress-xpath');
+
+Cypress.Commands.add('login', (username, password) => {
+  cy.visit('https://partners.shopify.com/organizations')
+  cy.xpath('//input[@type="email"]')
+    .should("be.visible")
+    .type(username);
+  cy.xpath('//button[@type="submit"]').should("be.visible").click();
+  cy.xpath('//input[@id="account_password"]')
+    .should("be.visible")
+    .type(password);
+  cy.xpath('//button[@type="submit"]').should("be.visible").click();
+})

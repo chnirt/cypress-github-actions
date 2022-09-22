@@ -4,6 +4,7 @@ const { pa11y } = require("@cypress-audit/pa11y");
 
 module.exports = defineConfig({
   e2e: {
+    // baseUrl: 'http://localhost:8080',
     setupNodeEvents(on, config) {
       // implement node event listeners here
       on("before:browser:launch", (browser = {}, launchOptions) => {
